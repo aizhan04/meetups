@@ -1,30 +1,38 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+	<div id="app">
+		<v-header />
+		<div class="main-content">
+			<router-view></router-view>
+		</div>
+	</div>
 </template>
 
+<script>
+import VHeader from "./components/VHeader.vue";
+
+export default {
+	components: { VHeader },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	font-family: "Nunito Sans", sans-serif;
+	color: #34423f;
 }
 
-#nav {
-  padding: 30px;
+.container {
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 0 15px;
+	overflow: hidden;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.main-content {
+	background-color: #f8f9fc;
 }
 </style>

@@ -1,13 +1,11 @@
 <template>
 	<div class="container">
-		<p>добро пожаловать</p>
+		<p>Создать митап</p>
 	</div>
 </template>
 
 <script>
-export default {
-	name: "Home",
-};
+export default {};
 </script>
 
 <style>
