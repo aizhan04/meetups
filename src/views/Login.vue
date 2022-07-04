@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import VLoader from '@/components/VLoader.vue';
+import VLoader from '@/components/VLoader.vue'
 export default {
   components: { VLoader },
 
@@ -55,31 +55,31 @@ export default {
       isEmpty: false,
       isValid: true,
       loading: false,
-    };
+    }
   },
 
   methods: {
     async submitForm() {
       // reset validation errors
       if (this.isEmpty) {
-        this.isEmpty = false;
+        this.isEmpty = false
       }
 
       if (!this.isValid) {
-        this.isValid = true;
+        this.isValid = true
       }
 
       if (!this.email || !this.password) {
-        this.isEmpty = true;
-        return;
+        this.isEmpty = true
+        return
       }
 
       const info = {
         email: this.email,
         password: this.password,
-      };
+      }
 
-      this.loading = true;
+      this.loading = true
 
       try {
         const response = await fetch(
@@ -91,22 +91,29 @@ export default {
             },
             body: JSON.stringify(info),
           }
-        );
+        )
 
         if (response.status === 403) {
-          throw new Error('403 is unacceptable for me!');
+          throw new Error('403 is unacceptable for me!')
         }
 
-        const data = await response.json();
-        console.log(data);
+        const userData = await response.json()
+
+        this.$store.commit('setUser', userData)
+        localStorage.setItem('user', JSON.stringify(userData))
+
+        this.email = ''
+        this.password = ''
+
+        this.$router.push('/')
       } catch (error) {
-        this.isValid = false;
+        this.isValid = false
       } finally {
-        this.loading = false;
+        this.loading = false
       }
     },
   },
-};
+}
 </script>
 
 <style scoped>
@@ -139,10 +146,11 @@ h2 {
 .error-text {
   color: #db3851;
   display: none;
+  margin-bottom: 20px;
 }
 
 .active {
-  display: unset;
+  display: block;
 }
 .form-group label {
   font-size: 20px;
