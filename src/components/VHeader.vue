@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .header-wrapper {
   padding: 30px;
 }

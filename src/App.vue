@@ -1,44 +1,38 @@
 <template>
-	<div id="app">
-		<v-header />
-		<div class="main-content">
-			<router-view></router-view>
-		</div>
-	</div>
+  <div id="app">
+    <v-header />
+    <div class="main-content">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
-import VHeader from "./components/VHeader.vue";
+import VHeader from './components/VHeader.vue'
 
 export default {
-	components: { VHeader },
-};
+  components: { VHeader },
+}
 </script>
 
 <style>
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 
-	font-family: "Nunito Sans", sans-serif;
-	color: #34423f;
+  font-family: 'Nunito Sans', sans-serif;
+  color: #34423f;
 }
 
 .container {
-	max-width: 1120px;
-	margin: 0 auto;
-	padding: 0 15px;
-	overflow: hidden;
-}
-
-.main-container {
-	max-width: 1008px;
-	width: 100%;
-	margin: 0 auto;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 15px;
+  overflow: hidden;
 }
 
 .main-content {
-	background-color: #f8f9fc;
+  background-color: #f8f9fc;
 }
 </style>

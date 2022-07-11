@@ -1,7 +1,7 @@
 export default {
   state: {
-    user: null,
-    isAuth: false,
+    user: JSON.parse(localStorage.getItem('user')) || null,
+    isAuth: localStorage.getItem('user') ? true : false,
   },
   mutations: {
     setUser(state, payload) {
