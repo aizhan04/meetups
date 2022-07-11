@@ -1,12 +1,14 @@
 <template>
 	<div class="container">
-		<p>добро пожаловать</p>
+		<v-cards />
 	</div>
 </template>
 
 <script>
+import VCards from "@/components/VCards.vue";
 export default {
 	name: "Home",
+	components: { VCards },
 };
 </script>
 

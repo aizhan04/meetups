@@ -32,6 +32,12 @@ export default {
 	overflow: hidden;
 }
 
+.main-container {
+	max-width: 1008px;
+	width: 100%;
+	margin: 0 auto;
+}
+
 .main-content {
 	background-color: #f8f9fc;
 }

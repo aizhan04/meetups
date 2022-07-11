@@ -26,11 +26,7 @@
 					Неверный логин или пароль
 				</p>
 
-				<!-- Should be one button -->
-				<button>
-					<v-loader v-if="loading" />
-					<span v-else>Вход</span>
-				</button>
+				<v-button buttonText="Вход" :loading="loading" />
 			</form>
 
 			<p class="form-question">
@@ -43,9 +39,10 @@
 </template>
 
 <script>
-import VLoader from "@/components/VLoader.vue";
+import VButton from "@/components/VButton.vue";
+
 export default {
-	components: { VLoader },
+	components: { VButton },
 
 	name: "Login",
 	data() {
