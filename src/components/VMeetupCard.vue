@@ -1,7 +1,7 @@
 <template>
   <div class="single-card">
     <div class="single-card__left">
-      <img class="img" src="@/assets/img.jpg" :alt="meetup.title" />
+      <img class="m-img" :src="meetupPoster" :alt="meetup.title" />
       <h3>{{ meetup.title }}</h3>
     </div>
 
@@ -51,6 +51,12 @@ export default {
 
       return `${day} ${monthMap[month]} ${year} г.`
     },
+    meetupPoster() {
+      if (this.meetupImg) {
+        return this.meetupImg
+      }
+      return require('@/assets/test.jpeg')
+    },
   },
   methods: {
     async getMeetupImage() {
@@ -60,12 +66,13 @@ export default {
 
       try {
         const res = await axios.get(
-          `https://course-vue.javascript.ru/api/images/${this.meetup.imageId}/`
+          `https://course-vue.javascript.ru/api/images/${this.meetup.imageId}/`,
+          { responseType: 'blob' }
         )
 
         if (res.status === 200) {
-          const file = res.data
-          console.log(file)
+          const url = URL.createObjectURL(res.data)
+          this.meetupImg = url
         }
       } catch (err) {
         alert('не удалось загрузить картинку')
@@ -88,6 +95,13 @@ export default {
   height: 220px;
 
   display: flex;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  transition: box-shadow 0.3s ease-out;
+}
+
+.single-card:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .single-card__right {
@@ -103,7 +117,7 @@ export default {
 
 .single-card__left {
   flex: 1;
-  background-color: green;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,6 +127,7 @@ export default {
   color: #fff;
   font-size: 26px;
   line-height: 28px;
+  z-index: 10;
 }
 .single-card__right-span {
   position: absolute;
@@ -148,9 +163,15 @@ export default {
   line-height: 28px;
 }
 
-.img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+.m-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: brightness(50%);
 }
 </style>
